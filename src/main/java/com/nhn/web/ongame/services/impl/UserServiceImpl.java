@@ -41,4 +41,6 @@ public class UserServiceImpl implements IService<User> {
         userRepository.deleteById(id);
         return "delete success!";
     }
+
+
 }

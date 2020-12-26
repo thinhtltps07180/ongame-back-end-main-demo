@@ -25,5 +25,5 @@ public interface IResource<T> {
 
     @DeleteMapping("{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    ResponseEntity<HttpStatus> deleteById(@PathVariable Long id);
+    ResponseEntity<?> deleteById(@PathVariable Long id);
 }

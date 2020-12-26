@@ -1,7 +1,7 @@
 package com.nhn.web.ongame.resources.impl;
 
-import com.nhn.web.ongame.models.Role;
 import com.nhn.web.ongame.models.User;
+import com.nhn.web.ongame.payload.response.MessageResponse;
 import com.nhn.web.ongame.resources.IResource;
 import com.nhn.web.ongame.services.IService;
 import org.slf4j.Logger;
@@ -9,9 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -48,14 +46,16 @@ public class UserResource implements IResource<User> {
     }
 
     @Override
-    public ResponseEntity<HttpStatus> deleteById(Long id) {
+    public ResponseEntity<?> deleteById(Long id) {
         try {
             userIService.deleteById(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return ResponseEntity.ok(new MessageResponse("Delete user is successfully!"));
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+
 
 
 
