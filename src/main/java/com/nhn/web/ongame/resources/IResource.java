@@ -9,7 +9,8 @@ import java.util.Collection;
 
 public interface IResource<T> {
     @GetMapping()
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     ResponseEntity<Collection<T>> findAll();
 
     @GetMapping("{id}")
